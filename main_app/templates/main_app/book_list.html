@@ -4,7 +4,7 @@
 
   <h1>Book Shelf</h1>
 
-  {% for book in books %}
+  {% for book in book_list %}
     <a href="{% url 'detail' book.id %}">
       <div class="card">
         <div class="card-content">

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Book
 
 # Create your views here.
@@ -10,17 +10,13 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def books_index(request):
-    books = Book.objects.all()
-    return render(request, 'books/index.html', {
-        'books': books
-    })
+class BooksList(ListView):
+    model = Book
+    fields = '__all__'
 
-def books_detail(request, book_id):
-    book = Book.objects.get(id = book_id)
-    return render(request, 'books/detail.html', {
-        'book': book
-    })
+class BookDetail(DetailView):
+    model = Book
+    fields = '__all__'
 
 class BookAdd(CreateView):
     model = Book
