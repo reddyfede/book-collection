@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Book
 
 # Create your views here.
@@ -29,3 +29,7 @@ class BookAdd(CreateView):
 class BookEdit(UpdateView):
     model = Book
     fields = ['description']
+
+class BookRemove(DeleteView):
+    model = Book
+    success_url = '/books'
