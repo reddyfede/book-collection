@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
 from .models import Book
 
 # Create your views here.
@@ -20,3 +21,7 @@ def books_detail(request, book_id):
     return render(request, 'books/detail.html', {
         'book': book
     })
+
+class BookAdd(CreateView):
+    model = Book
+    fields = '__all__'

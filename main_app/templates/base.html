@@ -20,8 +20,9 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Book Collection</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/books">My Books</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'book_add' %}">Add a book</a></li>
+          <li><a href="{% url 'index' %}">My Books</a></li>
         </ul>
       </div>
     </nav>
