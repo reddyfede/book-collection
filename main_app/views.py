@@ -10,6 +10,8 @@ from .models import Book
 #     {'title': 'The Colour Out of Space', 'author': 'H.P. Lovecraft', 'year':1927, 'description':'A short story about color blindness.'},
 # ]
 
+# b = Book(title= 'Moby Dick',author= 'Herman Melville', year=1851, description='A book about an old man that likes fishing.')
+
 def home(request):
     return render(request, 'home.html')
 
