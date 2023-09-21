@@ -11,6 +11,9 @@
       <p>Year: {{ book.year }}</p>
       <p>Description: {{ book.description }}</p>
     </div>
+    <div class="card-action">
+      <a href="{% url 'book_edit' book.id %}">Edit</a>
+    </div>
   </div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from .models import Book
 
 # Create your views here.
@@ -25,3 +25,7 @@ def books_detail(request, book_id):
 class BookAdd(CreateView):
     model = Book
     fields = '__all__'
+
+class BookEdit(UpdateView):
+    model = Book
+    fields = ['description']
