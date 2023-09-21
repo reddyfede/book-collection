@@ -12,8 +12,8 @@
       <p>Description: {{ book.description }}</p>
     </div>
     <div class="card-action">
-      <a href="{% url 'book_edit' book.id %}">Edit</a>
-      <a href="{% url 'book_remove' book.id %}">Remove from Shelf</a>
+      <a href="{% url 'book_edit' book.id %}" class="teal-text text-darken-3">Edit</a>
+      <a href="{% url 'book_remove' book.id %}"class="red-text text-darken-4">Remove from Shelf</a>
     </div>
   </div>
 
