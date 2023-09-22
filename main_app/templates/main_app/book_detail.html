@@ -23,7 +23,7 @@
       <form action="{% url 'add_quote' book.id %}" method="POST">
         {% csrf_token %}
         {{ quote_form.as_p }}
-        <input type="submit" class="btn" value="Add Quote">
+        <input type="submit" class="btn teal darken-3" value="Add Quote">
       </form>
 
       <table class="striped">
@@ -41,10 +41,5 @@
 
     </div>
   </div>
-
-  <script>
-    const textEl = document.getElementById('id_text');
-    M.textareaAutoResize(textEl);
-  </script>
 
 {% endblock %}
