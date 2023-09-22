@@ -7,3 +7,4 @@ Full Django App
 - All CRUD operations
 - One to Many Models
 - Many to Many Models
+- ClassView
