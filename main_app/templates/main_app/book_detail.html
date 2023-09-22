@@ -9,12 +9,42 @@
       <span class="card-title">{{ book.title }}</span>
       <p>Author: {{ book.author }}</p>
       <p>Year: {{ book.year }}</p>
-      <p>Description: {{ book.description }}</p>
+      <p>Description: {{ book.description|linebreaks }}</p>
     </div>
     <div class="card-action">
       <a href="{% url 'book_edit' book.id %}" class="teal-text text-darken-3">Edit</a>
       <a href="{% url 'book_remove' book.id %}"class="red-text text-darken-4">Remove from Shelf</a>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col s6">
+
+      <form action="{% url 'add_quote' book.id %}" method="POST">
+        {% csrf_token %}
+        {{ quote_form.as_p }}
+        <input type="submit" class="btn" value="Add Quote">
+      </form>
+
+      <table class="striped">
+        <thead>
+          <tr><th>Favourite Quotes</th></tr>
+        </thead>
+        <tbody>
+          {% for quote in book.quote_set.all %}
+            <tr>
+              <td>{{quote.text}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <script>
+    const textEl = document.getElementById('id_text');
+    M.textareaAutoResize(textEl);
+  </script>
 
 {% endblock %}

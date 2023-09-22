@@ -13,10 +13,13 @@ class Book(models.Model):
         return f'{self.title} - {self.id}'
     
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.id})
+        return reverse('detail', kwargs={'book_id': self.id})
     
 class Quote(models.Model):
-    text = models.TextField(max_length=300)
+    text = models.TextField(
+        'Quote Text',
+        max_length=300
+        )
     book = models.ForeignKey(
         Book,
         on_delete = models.CASCADE
