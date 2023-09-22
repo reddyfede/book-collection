@@ -12,4 +12,9 @@ urlpatterns = [
     path('books/<int:book_id>/add_quote/', views.add_quote, name='add_quote'),
     path('books/<int:book_id>/assoc_genre/<int:genre_id>/', views.assoc_genre, name='assoc_genre'),
     path('books/<int:book_id>/unassoc_genre/<int:genre_id>/', views.unassoc_genre, name='unassoc_genre'),
+    path('genres/', views.GenreList.as_view(), name='genres_index'),
+    path('genres/<int:pk>/', views.GenreDetail.as_view(), name='genres_detail'),
+    path('genres/create/', views.GenreCreate.as_view(), name='genres_create'),
+    path('genres/<int:pk>/update/', views.GenreUpdate.as_view(), name='genres_update'),
+    path('genres/<int:pk>/delete/', views.GenreDelete.as_view(), name='genres_delete'),
 ]

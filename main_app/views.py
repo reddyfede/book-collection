@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from .models import Book, Genre
 from .forms import QuoteForm
 
@@ -53,3 +53,21 @@ def assoc_genre(request, book_id, genre_id):
 def unassoc_genre(request, book_id, genre_id):
     Book.objects.get(id=book_id).genres.remove(genre_id)
     return redirect('detail', book_id=book_id)
+
+class GenreList(ListView):
+  model = Genre
+
+class GenreDetail(DetailView):
+  model = Genre
+
+class GenreCreate(CreateView):
+  model = Genre
+  fields = '__all__'
+
+class GenreUpdate(UpdateView):
+  model = Genre
+  fields = '__all__'
+
+class GenreDelete(DeleteView):
+  model = Genre
+  success_url = '/genres'

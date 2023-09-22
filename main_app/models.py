@@ -8,6 +8,12 @@ class Genre(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.id}'
+    
+    def get_absolute_url(self):
+        return reverse('genres_detail', kwargs={'pk': self.id})
+    
+    class Meta:
+        ordering = ['name']
 
 class Book(models.Model):
     title = models.CharField(max_length=100)

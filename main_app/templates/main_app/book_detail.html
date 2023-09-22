@@ -6,7 +6,7 @@
 
 <div class="card">
   <div class="card-content">
-    <span class="card-title">{{ book.title }}</span>
+    <h4>{{ book.title }}</h4>
     <p>Author: {{ book.author }}</p>
     <p>Year: {{ book.year }}</p>
     <p>Description: {{ book.description|linebreaks }}</p>
@@ -18,6 +18,7 @@
 </div>
 
 <div class="row">
+
   <div class="col s6">
     <h5>Favourite Quotes</h5>
 
@@ -39,53 +40,50 @@
 
   </div>
 
-  <div class="col s6 center">
-    <div class="col s3 center"></div>
-    <div class="col s6 center">
-
-      <h5>{{ book.title }} Genres</h5>
-      <div class="card">
-        <div class="card-content">
-          <div>
-            {% if book.genres.count %}
-            {% for genre in book.genres.all %}
-            <div>{{genre.name}}
-              <form action="{% url 'unassoc_genre' book.id genre.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn-floating btn-small red darken-4">X</button>
-              </form>
-            </div>
-            <hr />
-            {% endfor %}
+  <div class="col s4 offset-s1 center">
+    <h5>{{ book.title }} Genres</h5>
+    <div class="card">
+      <div class="card-content">
+        <div>
+          {% if book.genres.count %}
+          {% for genre in book.genres.all %}
+          <div>{{genre.name}}
+            <form action="{% url 'unassoc_genre' book.id genre.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn-floating btn-small red darken-4">X</button>
+            </form>
           </div>
-          {% else %}
-          <h5>No genres defined yet.</h5>
-          {% endif %}
+          <hr />
+          {% endfor %}
         </div>
+        {% else %}
+        <h5>No genres defined yet.</h5>
+        {% endif %}
       </div>
-
-      <h5>Available Genres</h5>
-      <div class="card">
-        <div class="card-content">
-          <div>
-            {% if not_genres.count %}
-            {% for genre in not_genres %}
-            <div>{{genre.name}}
-              <form action="{% url 'assoc_genre' book.id genre.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn-floating btn-small teal darken-3">+</button>
-              </form>
-            </div>
-            <hr />
-            {% endfor %}
-          </div>
-          {% else %}
-          <h5>No genres defined yet.</h5>
-          {% endif %}
-        </div>
-      </div>
-
     </div>
+
+    <h5>Available Genres</h5>
+    <div class="card">
+      <div class="card-content">
+        <div>
+          {% if not_genres.count %}
+          {% for genre in not_genres %}
+          <div>{{genre.name}}
+            <form action="{% url 'assoc_genre' book.id genre.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn-floating btn-small teal darken-3">+</button>
+            </form>
+          </div>
+          <hr />
+          {% endfor %}
+        </div>
+        {% else %}
+        <h5>No genres defined yet.</h5>
+        {% endif %}
+      </div>
+    </div>
+
+
   </div>
 </div>
 
