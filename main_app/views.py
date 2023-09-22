@@ -45,3 +45,11 @@ def add_quote(request, book_id):
         new_form.book_id = book_id
         new_form.save()
     return redirect('detail', book_id = book_id)
+
+def assoc_genre(request, book_id, genre_id):
+    Book.objects.get(id=book_id).genres.add(genre_id)
+    return redirect('detail', book_id=book_id)
+
+def unassoc_genre(request, book_id, genre_id):
+    Book.objects.get(id=book_id).genres.remove(genre_id)
+    return redirect('detail', book_id=book_id)
