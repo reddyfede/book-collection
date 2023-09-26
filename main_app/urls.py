@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('books/', views.BooksList.as_view(), name='index'),
+    path('books/', views.books_index, name='index'),
     path('books/<int:book_id>/', views.book_detail, name='detail'),
     path('books/add/', views.BookAdd.as_view(), name='book_add'),
     path('books/<int:pk>/edit/', views.BookEdit.as_view(), name='book_edit'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('genres/create/', views.GenreCreate.as_view(), name='genres_create'),
     path('genres/<int:pk>/update/', views.GenreUpdate.as_view(), name='genres_update'),
     path('genres/<int:pk>/delete/', views.GenreDelete.as_view(), name='genres_delete'),
+    path('accounts/singup/', views.signup, name='signup'),
 ]
