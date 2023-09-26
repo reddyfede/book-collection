@@ -1,2 +1,10 @@
 # book-collection
-My first take at a python-django app
+
+Full Django App
+
+### Feature
+
+- All CRUD operations
+- One to Many Models
+- Many to Many Models
+- ClassView
