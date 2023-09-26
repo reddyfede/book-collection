@@ -8,3 +8,5 @@ Full Django App
 - One to Many Models
 - Many to Many Models
 - ClassView
+- Authentication
+- Autorization
